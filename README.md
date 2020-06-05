@@ -28,3 +28,6 @@ The Chicago and New York City files also have the following two columns:
 
 ### Credits
 This project was conducted as part of the **Udacity Data Science with R Nanodegree Program**, and with the support of Udacity.
+
+### Updates
+Last updated on 6/5/2020. 
