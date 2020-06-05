@@ -30,10 +30,6 @@ chi$city <- c(rep('chi',times=dim(chi)[1]))
 cities <- merge(merge(ny,wash,by=names(wash),all=TRUE),chi,by=names(chi),all=TRUE)
 head(cities)
 
-tail(cities)
-
-dim(cities)[1] == dim(ny)[1]+dim(wash)[1]+dim(chi)[1]
-
 table(cities$city)
 
 table(cities$User.Type)
@@ -136,7 +132,7 @@ ggplot(aes(x=Birth.Year),
   geom_histogram(binwidth=1
                  ,color='black'
                  ,fill='#099DD9') +
-  theme_light() 
+  theme_light()
 
 ggplot(aes(y=Birth.Year,x=city),
        data=subset(cities,!is.na(Birth.Year) & city!='wash')) +
@@ -249,5 +245,3 @@ ggplot(aes(x=Birth.Year,y=Trip.Duration/3600)
   scale_color_manual(name="Statistics",values=c('Mean'='black','10th pctile'='blue',
                                'Median'='blue','90th pctile'='blue')) +
   theme_light()
-
-system('python -m nbconvert Explore_bikeshare_data.ipynb')
