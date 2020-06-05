@@ -41,7 +41,7 @@ table(cities$User.Type)
 library(ggplot2)
 
 ggplot(aes(x=User.Type), data=subset(cities,User.Type!='')) +
-  geom_bar(color='black', fill='#F79420', 
+  geom_bar(color='black', fill='#F79420',
            width=0.3, position=position_dodge(width=0.3)) +
   labs(x='Motivate user types', y='Number of trips',
        title='Trips and types of Motivate users in NYC, Chicago and Washington,D.C.') +
@@ -83,7 +83,7 @@ ggplot(aes(x=Trip.Duration/60),
   geom_histogram(binwidth=15
                  ,color='black') +
 #   scale_fill_brewer(palette='Blues') +
-  theme_light() 
+  theme_light()
 
 ggplot(aes(x=Trip.Duration/60),
        data=subset(cities,!is.na(Trip.Duration))) +
@@ -91,7 +91,7 @@ ggplot(aes(x=Trip.Duration/60),
                  ,color='black') +
   scale_x_continuous(breaks=seq(0,12*60,60),limits = c(0,12*60)) +
 #   scale_fill_brewer(palette='Blues') +
-  theme_light() 
+  theme_light()
 
 ggplot(aes(x=Trip.Duration/3600),
        data=subset(cities,!is.na(Trip.Duration))) +
@@ -101,7 +101,7 @@ ggplot(aes(x=Trip.Duration/3600),
   scale_x_continuous(breaks=seq(0,4,0.5),limits = c(0,4)) +
   labs(x='Trip duration (hours)', y='Number of trips',
        title='Distribution of Motivate trip durations') +
-  theme_light() 
+  theme_light()
 
 summary(cities$Trip.Duration/60)
 
@@ -116,7 +116,7 @@ ggplot(aes(x=Trip.Duration/3600,y=..density..),
   scale_x_continuous(breaks=seq(0,4,0.5),limits = c(0,4)) +
   labs(x='Trip duration (hours)', y='Trip density',
        title='Distribution of Motivate trip durations in Chicago, DC and NYC') +
-  theme_light() 
+  theme_light()
 
 by(cities$Trip.Duration/60,cities$city,summary)
 
@@ -129,7 +129,7 @@ ggplot(aes(x=Trip.Duration/3600,y=..density..),
   scale_x_continuous(breaks=seq(0,4,0.5),limits = c(0,4)) +
   labs(x='Trip duration (hours)', y='Trip density',
        title='Distribution of Motivate trip durations by user type in Chicago, DC and NYC') +
-  theme_light() 
+  theme_light()
 
 by(cities$Trip.Duration/60,cities$User.Type,summary)
 
@@ -143,12 +143,12 @@ ggplot(aes(x=Birth.Year),
 #   scale_x_continuous(breaks=seq(0,4,0.5),limits = c(0,4)) +
 #   labs(x='Trip duration (hours)', y='Trip density',
 #        title='Distribution of Motivate trip durations by user type in Chicago, DC and NYC') +
-  theme_light() 
+  theme_light()
 
 ggplot(aes(y=Birth.Year,x=city),
        data=subset(cities,!is.na(Birth.Year) & city!='wash')) +
   geom_boxplot() +
-  theme_light() 
+  theme_light()
 
 by(cities$Birth.Year,cities$city,summary)
 
@@ -168,10 +168,10 @@ ggplot(aes(y=Birth.Year,x=city),
         outlier.size=3) +
   scale_y_continuous(breaks=seq(1950,2010,10)) +
   coord_cartesian(ylim=c(1950,2010)) +
-  theme_light() 
+  theme_light()
 
 ggplot(aes(x=Birth.Year,y=Trip.Duration/3600)
-       ,data=subset(cities,!is.na(Trip.Duration) & !is.na(Birth.Year) & city!='wash')) + 
+       ,data=subset(cities,!is.na(Trip.Duration) & !is.na(Birth.Year) & city!='wash')) +
 #scatter plot
   geom_point(alpha=.1,
              position=position_jitter(h=0),
@@ -181,32 +181,32 @@ ggplot(aes(x=Birth.Year,y=Trip.Duration/3600)
                   ylim=c(0,4)) +
   scale_x_continuous(breaks=seq(1950,2010,10)) +
   scale_y_continuous(breaks=seq(0,4,0.5)) +
-  theme_light() 
+  theme_light()
 
 ggplot(aes(x=Birth.Year,y=Trip.Duration/3600)
-       ,data=subset(cities,!is.na(Trip.Duration) & !is.na(Birth.Year) & city!='wash')) + 
+       ,data=subset(cities,!is.na(Trip.Duration) & !is.na(Birth.Year) & city!='wash')) +
 #scatter plot
   geom_point(alpha=.05,
              position=position_jitter(h=0),
              color='orange') +
 #summary lines
 ##mean
-  geom_line(stat='summary', 
-            fun.y='mean') + 
+  geom_line(stat='summary',
+            fun.y='mean') +
 ##10th quantile
-  geom_line(stat='summary', 
+  geom_line(stat='summary',
             fun.y='quantile',
-            fun.args=list(probs=.1), 
+            fun.args=list(probs=.1),
             linetype=2, #dashed
             color='blue') +
 ##median
-  geom_line(stat='summary', 
-            fun.y='median', 
+  geom_line(stat='summary',
+            fun.y='median',
             color='blue') +
 ##90th quantile
-   geom_line(stat='summary', 
+   geom_line(stat='summary',
             fun.y='quantile',
-            fun.args=list(probs=.9), 
+            fun.args=list(probs=.9),
             linetype=2, #dashed
             color='blue') +
 #more parameters
@@ -220,29 +220,29 @@ ggplot(aes(x=Birth.Year,y=Trip.Duration/3600)
   theme_light()
 
 ggplot(aes(x=Birth.Year,y=Trip.Duration/3600)
-       ,data=subset(cities,!is.na(Trip.Duration) & !is.na(Birth.Year) & city!='wash')) + 
+       ,data=subset(cities,!is.na(Trip.Duration) & !is.na(Birth.Year) & city!='wash')) +
 #scatter plot
   geom_point(alpha=.05,
              position=position_jitter(h=0),
              color='orange') +
 #summary lines
 ##mean
-  geom_line(stat='summary', 
+  geom_line(stat='summary',
             fun.y='mean',
-            aes(color='Mean',linetype='Mean')) + 
+            aes(color='Mean',linetype='Mean')) +
 ##10th quantile
-  geom_line(stat='summary', 
+  geom_line(stat='summary',
             fun.y='quantile',
-            fun.args=list(probs=.1), 
+            fun.args=list(probs=.1),
             aes(color='10th pctile',linetype='10th pctile')) +
 ##median
-  geom_line(stat='summary', 
-            fun.y='median', 
+  geom_line(stat='summary',
+            fun.y='median',
             aes(color='Median',linetype='Median')) +
 ##90th quantile
-   geom_line(stat='summary', 
+   geom_line(stat='summary',
             fun.y='quantile',
-            fun.args=list(probs=.9), 
+            fun.args=list(probs=.9),
             aes(color='90th pctile',linetype='90th pctile')) +
 #more parameters
   coord_cartesian(xlim=c(1950,2000),
@@ -256,5 +256,3 @@ ggplot(aes(x=Birth.Year,y=Trip.Duration/3600)
   scale_color_manual(name="Statistics",values=c('Mean'='black','10th pctile'='blue',
                                'Median'='blue','90th pctile'='blue')) +
   theme_light()
-
-system('python -m nbconvert Explore_bikeshare_data.ipynb')
