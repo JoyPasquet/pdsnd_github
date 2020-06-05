@@ -30,10 +30,6 @@ chi$city <- c(rep('chi',times=dim(chi)[1]))
 cities <- merge(merge(ny,wash,by=names(wash),all=TRUE),chi,by=names(chi),all=TRUE)
 head(cities)
 
-tail(cities)
-
-dim(cities)[1] == dim(ny)[1]+dim(wash)[1]+dim(chi)[1]
-
 table(cities$city)
 
 table(cities$User.Type)
